@@ -3,6 +3,7 @@
   "displayName": "ESQL Language Support",
   "description": "Syntax highlighting for ESQL",
   "version": "0.0.1",
+  "publisher": "user",
   "repository": {
     "type": "git",
     "url": "https://github.com/maxwilliams94/vscode-esql"
@@ -23,7 +24,8 @@
     "grammars": [{
       "language": "esql",
       "scopeName": "source.esql",
-      "path": "./syntaxes/esql.tmLanguage.json"
+      "path": "./syntaxes/esql.tmLanguage.json",
+      "format": "json"
     }]
   }
 }

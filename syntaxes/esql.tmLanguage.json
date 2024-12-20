@@ -1,0 +1,120 @@
+{
+  "name": "ESQL",
+  "scopeName": "source.esql",
+  "fileTypes": ["esql"],
+  "patterns": [
+    {
+      "name": "keyword.control.esql",
+      "match": "\\b(IF|THEN|ELSE|END|WHILE|DO|REPEAT|UNTIL|CASE|WHEN|CREATE|DECLARE|SET|RETURN|CALL|FOR|EACH)\\b",
+      "comment": "Control flow keywords"
+    },
+    {
+      "name": "keyword.other.esql",
+      "match": "\\b(PROCEDURE|FUNCTION|MODULE|BEGIN|BROKER|SCHEMA|PATH|BODY|COMPUTE|PROPAGATE|MESSAGE|THROW|RESIGNAL|HANDLER|MOVE|DELETE|INSERT|UPDATE|VALUES)\\b",
+      "comment": "ESQL-specific keywords"
+    },
+    {
+      "name": "storage.type.esql",
+      "match": "\\b(INTEGER|DECIMAL|CHARACTER|TIMESTAMP|DATE|TIME|BLOB|ROW|REFERENCE|BOOLEAN|INT|CHAR|VARCHAR)\\b",
+      "comment": "Data types"
+    },
+    {
+      "name": "constant.language.esql",
+      "match": "\\b(TRUE|FALSE|NULL|SQLCODE|SQLSTATE|DEFAULT)\\b",
+      "comment": "Language constants"
+    },
+    {
+      "name": "string.quoted.double.esql",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.esql",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.single.esql",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.esql",
+          "match": "''"
+        }
+      ]
+    },
+    {
+      "name": "comment.line.double-dash.esql",
+      "match": "--.*$"
+    },
+    {
+      "name": "comment.block.esql",
+      "begin": "/\\*",
+      "end": "\\*/",
+      "captures": {
+        "0": { "name": "punctuation.definition.comment.esql" }
+      }
+    },
+    {
+      "name": "constant.numeric.esql",
+      "match": "\\b([0-9]+\\.?[0-9]*|\\.[0-9]+)\\b"
+    },
+    {
+      "name": "variable.other.esql",
+      "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b",
+      "comment": "Variables and identifiers"
+    },
+    {
+      "name": "keyword.operator.esql",
+      "match": "\\b(AND|OR|NOT|IN|LIKE|BETWEEN|IS|NULL|ASC|DESC)\\b|[=<>!]+",
+      "comment": "Operators"
+    },
+    {
+      "name": "support.function.esql",
+      "match": "\\b(COALESCE|SUBSTRING|OVERLAY|POSITION|LENGTH|UPPER|LOWER|TRIM|ROUND|CAST|ASBITSTREAM|CAST|ROUND|CEILING|FLOOR)\\b",
+      "comment": "Built-in functions"
+    },
+    {
+      "name": "punctuation.separator.esql",
+      "match": "[;,.]"
+    }
+  ],
+  "repository": {
+    "strings": {
+      "patterns": [
+        {
+          "include": "#qstrings"
+        },
+        {
+          "include": "#sqstrings"
+        }
+      ]
+    },
+    "qstrings": {
+      "name": "string.quoted.double.esql",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "include": "#string-character-escape"
+        }
+      ]
+    },
+    "sqstrings": {
+      "name": "string.quoted.single.esql",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "include": "#string-character-escape"
+        }
+      ]
+    },
+    "string-character-escape": {
+      "name": "constant.character.escape.esql",
+      "match": "\\\\(x\\h{2}|[0-2][0-7]{2}|3[0-6][0-7]|37[0-7]|[4-7][0-7]|.)"
+    }
+  }
+}
