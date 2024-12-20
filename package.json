@@ -3,6 +3,10 @@
   "displayName": "ESQL Language Support",
   "description": "Syntax highlighting for ESQL",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxwilliams94/vscode-esql"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },
